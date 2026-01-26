@@ -12,13 +12,13 @@ from sklearn.metrics import confusion_matrix, accuracy_score
 
 # ----------------- Configuration -----------------
 HDF5_FILE_PATH = os.environ.get('HDF5_DATA_PATH', 'RML2018.hdf5')
-RESULTS_DIR = 'results_ssl_0dB_node'
+RESULTS_DIR = 'results_ssl_node_0dB'
 if not os.path.exists(RESULTS_DIR):
     os.makedirs(RESULTS_DIR)
 
 # Training Hyperparameters
 BASE_EPOCHS = 150        
-RETRAIN_EPOCHS = 100      
+RETRAIN_EPOCHS = 50      
 BATCH_SIZE = 400
 LEARNING_RATE = 0.001
 EARLY_STOPPING_PATIENCE = 15
@@ -358,10 +358,10 @@ def get_pseudo_labels_detailed(model, dataloader, threshold=0.9):
             
             # Oracle Check
             if target_oracle is not None and mask.sum() > 0:
-                matches = (preds[mask] == target_oracle[mask]).cpu().numpy() # Boolean array
-                snrs = z_snr[mask].cpu().numpy() if z_snr is not None else np.zeros(len(matches))
+                matches = (preds[mask] == target_oracle[mask]).cpu().numpy().flatten() # Ensure 1D bool
+                snrs = z_snr[mask].cpu().numpy().flatten() if z_snr is not None else np.zeros(len(matches))
                 for match, s in zip(matches, snrs):
-                    oracle_hits.append((match, s))
+                    oracle_hits.append((bool(match), float(s))) # Cast to standard python types
 
             local_hits = torch.nonzero(mask).squeeze(1).cpu().numpy()
             global_hits = local_hits + batch_start_idx

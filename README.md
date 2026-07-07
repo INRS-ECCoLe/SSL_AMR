@@ -11,7 +11,7 @@ Deep learning is the dominant approach for Automatic Modulation Classification (
 
 By utilizing SNR-localized self-training with Softmax pseudo-labeling, the PI representation enables recurrent models to achieve near fully-supervised performance while completely preventing the training collapse typically observed in traditional LSTMs under high label scarcity.
 
-### Evaluated Architectures (Softmax SSL)
+### Evaluated Architectures (SSL)
 This repository isolates the differences between Traditional (I/Q only) and Physics-Informed (I/Q + A + $\phi$) representations across three architectures:
 * **CNN**: `ssl_CNN.py` vs. `ssl_PICNN.py`
 * **BiLSTM**: `SSL_LSTM.py` vs. `SSL_PILSTM.py`

@@ -31,12 +31,3 @@ scikit-learn>=1.0.0
 matplotlib>=3.4.0
 pandas>=1.3.0
 
-
-### Citation (expecting)
-
-@article{mahabub2026physics,
-  title={Physics-Informed Representations for Semi-Supervised Automatic Modulation Classification},
-  author={Mahabub, Atik and Vakili, Shervin},
-  journal={IEEE Communications Letters},
-  year={2026}
-}

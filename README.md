@@ -126,7 +126,7 @@ thresholds.
   title   = {Physics-Informed Representations for Semi-Supervised Automatic
              Modulation Classification},
   journal = {IEEE Signal Processing Letters},
-  note    = {submitted},
+  note    = {Revised-V1},
   year    = {2026}
 }
 ```
